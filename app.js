@@ -56,11 +56,11 @@ function validateZip() {
     // Romania postcodes
     // Note: For Ilfov and Giurgiu, change the 2nd digit regex to 7 and
     // 8 respectively and for Bucharest change the 2nd digit range from 1 to 6.
-    // const re = /^[0-9][0-5][0-9]{4}/;
+    const re = /^[0-9][0-5][0-9]{4}/;
     // USA postcodes
     // const re = /^[0-9]{5}(-[0-9]{4})?$/;
     // UK postcodes
-    const re = /^[A-Z][A-Z0-9][A-Z0-9]?[A-Z0-9]?\s[0-9][A-Z][A-Z]/;
+    // const re = /^[A-Z][A-Z0-9][A-Z0-9]?[A-Z0-9]?\s[0-9][A-Z][A-Z]/;
     
     if (!re.test(zip.value)) {
 
@@ -75,7 +75,18 @@ function validateZip() {
 
 
 function validateEmail() {
+    const email = document.getElementById('email');
+    // Check for email address. Escaping - and . characters is necessary.
+    const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_]+)\.([a-zA-Z]{2,5})$/;
+    
+    if (!re.test(email.value)) {
 
+        email.classList.add('is-invalid');
+    }
+    else {
+        email.classList.remove('is-invalid');
+    }
+    
 }
 
 function validatePhone() {
