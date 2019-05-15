@@ -28,15 +28,10 @@ function validateName() {
      // Check if at least one the input name chars is an uppercase letter
     const caps = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var containsCapitalLetter = false;
-    console.log(name.value);
     for (var l = 0; l < name.value.length; l++) {
         for (var k = 0; k < caps.length; k++) {
             if (name.value[l] == caps[k]) {
                 containsCapitalLetter = true;
-                console.log(containsCapitalLetter);
-            }
-            else {
-                console.log(containsCapitalLetter);
             }
         }
     }
@@ -55,13 +50,15 @@ function validateName() {
 }
 
 
-// Validate Zip for Romania postcodes
+// Validate Zip for Romania and US postcodes
 function validateZip() {
     const zip = document.getElementById('zip');
+    // Romania postcodes
     // Note: For Ilfov and Giurgiu, change the 2nd digit regex to 7 and
     // 8 respectively and for Bucharest change the 2nd digit range from 1 to 6.
     const re = /^[0-9][0-5][0-9]{4}/;
-    
+    // USA postcodes
+    // const re = /^[0-9]{5}(-[0-9]{4})?$/;
     
     if (!re.test(zip.value)) {
 
@@ -71,6 +68,9 @@ function validateZip() {
         zip.classList.remove('is-invalid');
     }
 }
+
+
+
 
 function validateEmail() {
 
