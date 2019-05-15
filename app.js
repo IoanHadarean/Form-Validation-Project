@@ -6,9 +6,6 @@ document.getElementById('phone').addEventListener('blur', validatePhone);
 
 
 
-
-
-
 function validateName() {
     const name = document.getElementById('name');
     // Regex checking if the form name is between 6 and 25 characters
@@ -16,7 +13,8 @@ function validateName() {
     // and can not contain whitespaces.
     const re = /^([a-zA-Z0-9\u00C0-\u00FF])+[\w\W]{5,25}$/;
 
-
+    
+    // Check if at least one the input name chars is a digit
     const numberArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var containsDigit = false;
     for (var i = 0; i < name.value.length; i++) {
@@ -27,7 +25,7 @@ function validateName() {
         }
     }
     
-
+     // Check if at least one the input name chars is an uppercase letter
     const caps = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var containsCapitalLetter = false;
     console.log(name.value);
@@ -45,7 +43,7 @@ function validateName() {
     
     
     
-
+    // Add invalid class if the checking criteria is not met
     if (!re.test(name.value) || containsDigit == false || containsCapitalLetter == false) {
 
         name.classList.add('is-invalid');
@@ -56,8 +54,22 @@ function validateName() {
 
 }
 
-function validateZip() {
 
+// Validate Zip for Romania postcodes
+function validateZip() {
+    const zip = document.getElementById('zip');
+    // Note: For Ilfov and Giurgiu, change the 2nd digit regex to 7 and
+    // 8 respectively and for Bucharest change the 2nd digit range from 1 to 6.
+    const re = /^[0-9][0-5][0-9]{4}/;
+    
+    
+    if (!re.test(zip.value)) {
+
+        zip.classList.add('is-invalid');
+    }
+    else {
+        zip.classList.remove('is-invalid');
+    }
 }
 
 function validateEmail() {
