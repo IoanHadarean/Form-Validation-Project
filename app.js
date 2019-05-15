@@ -50,15 +50,17 @@ function validateName() {
 }
 
 
-// Validate Zip for Romania and US postcodes
+// Validate Zip for Romania, UK and US postcodes
 function validateZip() {
     const zip = document.getElementById('zip');
     // Romania postcodes
     // Note: For Ilfov and Giurgiu, change the 2nd digit regex to 7 and
     // 8 respectively and for Bucharest change the 2nd digit range from 1 to 6.
-    const re = /^[0-9][0-5][0-9]{4}/;
+    // const re = /^[0-9][0-5][0-9]{4}/;
     // USA postcodes
     // const re = /^[0-9]{5}(-[0-9]{4})?$/;
+    // UK postcodes
+    const re = /^[A-Z][A-Z0-9][A-Z0-9]?[A-Z0-9]?\s[0-9][A-Z][A-Z]/;
     
     if (!re.test(zip.value)) {
 
